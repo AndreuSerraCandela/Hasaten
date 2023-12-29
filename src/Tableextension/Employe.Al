@@ -10,6 +10,7 @@ tableextension 90106 Empleado extends Employee
             DataClassification = ToBeClassified;
             Caption = 'Tipo Empleado';
             TableRelation = "Tipo Empleado";
+
         }
         field(50001; Perfil; Code[20])
         {
