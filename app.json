@@ -1,0 +1,37 @@
+{
+  "id": "a74a30fe-0b74-4e40-a976-1c84cb3b2214",
+  "name": "Hastend_01",
+  "publisher": "MaybeCloud",
+  "version": "1.0.7.6",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "dbfd5720-e41b-4e84-8a65-3868702c0663",
+      "publisher": "MaybeCloud",
+      "name": "HG WebApp",
+      "version": "1.0.0.8"
+    }
+  ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "21.3.0.0",
+  "idRanges": [
+    {
+      "from": 50100,
+      "to": 90159
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": false,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "10.0",
+  "features": [ "TranslationFile" ]
+}
