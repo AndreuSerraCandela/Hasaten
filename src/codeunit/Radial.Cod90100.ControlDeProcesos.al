@@ -363,6 +363,7 @@ codeunit 90100 ControlDeProcesos
         Emply.SetRange("Resource No.", Res."No.");
         If Emply.FindFirst() then begin
             If Rec."Unit Price" = 0 Then begin
+                Hist.SetCurrentKey(Empleado, "Fecha Inicio", "Fecha Fin");
                 Hist.SetRange(Empleado, Emply."No.");
                 Hist.SetRange(Proyecto, Rec."Job No.");
                 Hist.SetFilter("Fecha Inicio", '%1|<=%2', 0D, Rec.Date);
@@ -692,6 +693,7 @@ codeunit 90100 ControlDeProcesos
     var
         LinHisContractEmploy: Record "Lin Hist contrato empleado";
     begin
+        LinHisContractEmploy.SetCurrentKey(Empleado, "Fecha Inicio");
         LinHisContractEmploy.SetRange(Empleado, pHGWATimeSheetsLines."Resource No.");
         LinHisContractEmploy.SetFilter("Fecha Inicio", '%1|<=%2', 0D, pHGWATimeSheetsLines.Date);
         IF LinHisContractEmploy.FindLast() then begin
