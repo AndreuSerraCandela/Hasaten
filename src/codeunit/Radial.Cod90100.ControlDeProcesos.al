@@ -169,8 +169,11 @@ codeunit 90100 ControlDeProcesos
                         //JobPlaning.Validate("Qty. to Transfer to Invoice", Lines.Hours);
                         While not JobPlaning.Insert() do begin
 
+                            if line = 0 then
+                                line += 10000;
                             JobPlaning."Line No." := Line;
                             line += 10000;
+
 
                         end;
                     end;
@@ -206,6 +209,7 @@ codeunit 90100 ControlDeProcesos
     begin
         plineas.SetRange("Job No.", planing."Job No.");
         plineas.SetRange("Resource No.", planing."No.");
+        plineas.SetRange("Job Task No.", planing."Job Task No.");
         plineas.SetRange(JobLine, planing."Line No.");
         plineas.SetRange(plineas.Invoiced, true);
         if plineas.FindLast() then begin
