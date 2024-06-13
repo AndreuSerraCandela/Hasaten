@@ -229,7 +229,7 @@ page 50256 LineasPartesWeb
             {
                 ApplicationArea = All;
 
-                RunObject = page "Horas recursos";
+             //   RunObject = page "Horas recursos";
             }
             action(EditarPagina)
             {
