@@ -1,7 +1,7 @@
 /// <summary>
 /// TableExtension JobLedgEntry (ID 90152) extends Record Job Ledger Entry //169.
 /// </summary>
-tableextension 90152 "JobLedgEntry" extends "Job Ledger Entry" //169
+tableextension 50152 "JobLedgEntry" extends "Job Ledger Entry" //169
 {
     fields
     {
