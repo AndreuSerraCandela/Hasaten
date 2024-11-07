@@ -1434,9 +1434,11 @@ report 90110 "Factura-TWINBEE"
         PriceLbl: Label 'Price';
         PricePerLbl: Label 'Price per';
 
+
     local procedure InitLogInteraction()
     begin
-        LogInteraction := SegManagement.FindInteractTmplCode(4) <> '';
+        // LogInteraction := SegManagement.FindInteractTmplCode(4) <> '';
+        LogInteraction := SegManagement.FindInteractionTemplateCode(Enum::"Interaction Log Entry Document Type"::"Sales Inv.") <> '';
     end;
 
     local procedure InitializeShipmentLine()

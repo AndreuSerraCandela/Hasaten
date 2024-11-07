@@ -1,4 +1,5 @@
-tableextension 90154 ResourceEx extends Resource //156
+//SE RENUMERA 50154, XQ 90154 ESTA EN irf 90154
+tableextension 50154 ResourceEx extends Resource //156
 {
     fields
     {
