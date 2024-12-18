@@ -16,5 +16,10 @@ tableextension 90102 ConfJob extends "Jobs Setup" //315
             Caption = 'Prices in resources';
 
         }
+        field(50104; "Calendario Oficial"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            TableRelation = "Base Calendar".Code;
+        }
     }
 }

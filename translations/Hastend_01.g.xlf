@@ -923,6 +923,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CardTimeSheet - Action Refresh Job assignation. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3808977570 - Action 2005709520 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1238614785">
+          <source>Actualizar planificación de proyectos</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CardTimeSheet - Action Refresh Job planning 3 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3808977570 - Action 1964985444 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1238614785">
           <source>Undo Invoice by Resource</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1228,6 +1233,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JobList - Action Undo Invoice by Job - Method OnAction - NamedType Text001</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1627283316 - Control 2432130245 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2556642749">
+          <source>Specifies the value of the Calendario Oficial field.</source>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JobSetup - Control Calendario Oficial - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1627283316 - Control 160745620 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2556642749">
           <source>Proyecto Vacaciones</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1307,6 +1317,11 @@
           <source>Specifies the value of the Posting No. Series field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesCreditMemoEx - Control Posting No. Series - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1993433157 - Field 2432130245 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2556642749">
+          <source>Calendario Oficial</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ConfJob - Field Calendario Oficial - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1993433157 - Field 160745620 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2556642749">
           <source>Job Code</source>

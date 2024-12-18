@@ -705,4 +705,25 @@ codeunit 90100 ControlDeProcesos
             pHGWATimeSheetsLines.Validate("Unit Price", LinHisContractEmploy."Tarifa 1");
         end;
     end;
+
+
+    procedure FestivoNACIONAL(fechaFestiva: Date): Boolean
+    var
+        CalendarioBaseChange: Record 7601;
+        BalenCalendario: Record 7600;
+        ConfSetupProyecto: Record "Jobs Setup";
+    begin
+        ConfSetupProyecto.Get();
+        ConfSetupProyecto.TestField("Calendario Oficial");
+
+        BalenCalendario.SetRange(Code, ConfSetupProyecto."Calendario Oficial");
+        if BalenCalendario.FindFirst() then begin
+            CalendarioBaseChange.SetRange(CalendarioBaseChange."Base Calendar Code", BalenCalendario.Code);
+            CalendarioBaseChange.SetRange(Date, fechaFestiva);
+            if CalendarioBaseChange.FindSet(true) then begin
+                exit(CalendarioBaseChange.Nonworking)
+            end else
+                exit(false);
+        end;
+    end;
 }

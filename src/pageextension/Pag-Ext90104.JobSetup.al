@@ -16,6 +16,11 @@ pageextension 90104 JobSetup extends "Jobs Setup"
             {
                 ApplicationArea = All;
             }
+            field("Calendario Oficial"; Rec."Calendario Oficial")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Calendario Oficial field.', Comment = '%';
+            }
         }
     }
 }

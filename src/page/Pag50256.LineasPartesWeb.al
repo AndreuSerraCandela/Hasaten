@@ -229,7 +229,7 @@ page 50256 LineasPartesWeb
             {
                 ApplicationArea = All;
 
-             //   RunObject = page "Horas recursos";
+                //   RunObject = page "Horas recursos";
             }
             action(EditarPagina)
             {
@@ -302,4 +302,5 @@ page 50256 LineasPartesWeb
         Precio2: Decimal;
         SalarioAnual: Decimal;
         ppagEditable: Boolean;
+        p50252: Page 50252;
 }
