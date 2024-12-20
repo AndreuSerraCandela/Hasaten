@@ -924,7 +924,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CardTimeSheet - Action Refresh Job assignation. - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3808977570 - Action 2005709520 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1238614785">
-          <source>Actualizar planificación de proyectos</source>
+          <source>Actualizar planificación de proyectos3</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CardTimeSheet - Action Refresh Job planning 3 - Property Caption</note>
         </trans-unit>

@@ -121,7 +121,7 @@ pageextension 90100 CardTimeSheet extends "HGWA TimeSheet Card" //50252
 
             action("Refresh Job planning 3")
             {
-                Caption = 'Actualizar planificación de proyectos';
+                Caption = 'Actualizar planificación de proyectos3';
                 ApplicationArea = All;
                 Image = Refresh;
 
@@ -156,6 +156,7 @@ pageextension 90100 CardTimeSheet extends "HGWA TimeSheet Card" //50252
                         //obtiene el proyecto asignado en el día
                         jobNo := '';
                         jobTaskNo := '';
+                        isHoliday := false;
                         recResourceJobs.Reset();
                         recResourceJobs.SetRange("Resource No.", Rec."Resource No.");
                         recResourceJobs.SetFilter("From Date", '..%1', iterDate);
