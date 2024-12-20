@@ -185,6 +185,8 @@ pageextension 90100 CardTimeSheet extends "HGWA TimeSheet Card" //50252
 
 
                         isHoliday := CtrolProcesos.FestivoNACIONAL(iterDate);
+                        if isHoliday = true then
+                            dHours := 0;
 
                         recTSLine.Reset();
                         recTSLine.SetRange("TimeSheet No.", Rec."TimeSheet No.");
