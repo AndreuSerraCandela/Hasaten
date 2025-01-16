@@ -283,6 +283,186 @@ codeunit 90100 ControlDeProcesos
         Rec.Delete();
     end;
 
+
+    procedure CrearPartesMensual()
+    var
+        RResurso: Record "Resource";
+        // RecursoPorProyecto: Record "WAPP Resource Jobs";
+        RecursoPorProyecto: Record "HGWA Resource Jobs";
+        dlgDateTime: Page "Date-Time Dialog";
+        //  CabeceraPArte: Record "WAPP TimeSheets";
+        CabeceraPArte: Record "HGWA TimeSheets";
+        Month: Code[20];
+        //  CabParteExiste: Record "WAPP TimeSheets";
+        CabParteExiste: Record "HGWA TimeSheets";
+    //  WebRecurso: Record "WAPP Users";
+
+    begin
+        if Confirm('Desea crear partes a los Recurso', true, false) then begin
+            dlgDateTime.UseDateOnly();
+            if dlgDateTime.RunModal() = Action::OK then begin
+                Month := Format(dlgDateTime.GetDate(), 0, '<Year4>-<Month,2>');
+                // If (CabeceraPArte."TimeSheet No." = '') and (CabeceraPArte."Resource No." <> '') and (CabeceraPArte.Month <> '') then begin
+                //     CabeceraPArte."TimeSheet No." := StrSubstNo('%1_%2', CabeceraPArte."Resource No.", CabeceraPArte.Month);
+                // end;
+            end;
+            RResurso.SetRange(Blocked, false);
+            if RResurso.FindFirst() then begin
+                //si devuelve un false entonces ok al proceso, si devulve true el recurso esta bloqueado por la web.               
+                repeat
+                    if RecursoEmpleado(RResurso."No.") then begin
+                        RecursoPorProyecto.SetRange("Resource No.", RResurso."No.");
+                        if RecursoPorProyecto.FindFirst() then begin
+
+                            CabeceraPArte.Init();
+                            CabeceraPArte."TimeSheet No." := StrSubstNo('%1_%2', RResurso."No.", Month);
+                            CabeceraPArte.Validate(CabeceraPArte.Month, Month);
+                            CabeceraPArte.Validate("Resource No.", RResurso."No.");
+
+                            CabParteExiste.SetRange("TimeSheet No.", CabeceraPArte."TimeSheet No.");
+                            if not CabParteExiste.FindFirst() then begin
+                                CabeceraPArte.Insert(true);
+                                LineasPartes(Month, CabeceraPArte);
+                            end;
+
+                        end;
+                    end;
+                until RResurso.Next = 0;
+            end;
+        end;
+    end;
+
+    //local procedure LineasPartes(pMonth: code[20]; var pCabParte: Record "WAPP TimeSheets")
+    local procedure LineasPartes(pMonth: code[20]; var pCabParte: Record "HGWA TimeSheets")
+    var
+        //  recTSLine: Record "WAPP TimeSheets Lines";
+        //  recResourceJobs: Record "WAPP Resource Jobs";
+        recTSLine: Record "HGWA TimeSheets Lines";
+        recResourceJobs: Record "HGWA Resource Jobs";
+        jobNo: Code[20];
+        jobTaskNo: Code[20];
+        jobHour: Decimal;
+        jobType: Code[20];
+        recResCapacity: Record "Res. Capacity Entry";
+        fromDate: Date;
+        untilDate: Date;
+        iterDate: Date;
+        iMonth: Integer;
+        iYear: Integer;
+        iWeekDay: Integer;
+        isHoliday: Boolean;
+        dHours: Decimal;
+        WorkTypeCod: Code[20];
+    // controlProcesos: Codeunit EventosRadial;
+    begin
+        //genera las líneas
+        //CALCULAMOS FECHAS.
+        Evaluate(iMonth, Format(pMonth).Split('-').Get(2));
+        Evaluate(iYear, Format(pMonth).Split('-').Get(1));
+        fromDate := DMY2Date(1, iMonth, iYear);
+        untilDate := CALCDATE('<CM>', fromDate);
+        iterDate := fromDate;
+
+        repeat
+            //obtiene el proyecto asignado en el día
+            isHoliday := false;
+            jobNo := '';
+            jobTaskNo := '';
+            recResourceJobs.Reset();
+            recResourceJobs.SetRange("Resource No.", pCabParte."Resource No.");
+            recResourceJobs.SetFilter("From Date", '..%1', iterDate);
+            recResourceJobs.SetFilter("Until Date", '%1..', iterDate);
+            if recResourceJobs.FindFirst() then begin
+                jobNo := recResourceJobs."Job No.";
+                jobTaskNo := recResourceJobs."Job Task No.";
+                // jobHour := recResourceJobs.Hours;
+                // jobType := recResourceJobs."Activity Code";
+                // WorkTypeCod := recResourceJobs."Work Type Code";
+            end;
+
+            // if rec.Festivos = false then
+            //     controlProcesos.DiasFestivos(iterDate, rec.Festivos);
+
+
+            //obtiene la capacidad del recurso para el día
+            dHours := 0;
+            recResCapacity.Reset();
+            recResCapacity.SetRange("Resource No.", pCabParte."Resource No.");
+            recResCapacity.SetRange("Date", iterDate);
+            if recResCapacity.Find('-') then
+                repeat
+                    dHours += recResCapacity.Capacity;
+                until recResCapacity.Next = 0;
+
+            isHoliday := FestivoNACIONAL(iterDate);
+            // PagCalendarioBaseVerFestivo.FindeSemana(fromDate, isHoliday);
+            //buscarfestivo
+
+            recTSLine.Reset();
+            // recTSLine.SetRange("TimeSheet No.", Rec."TimeSheet No.");
+            recTSLine.SetRange("TimeSheet No.", pCabParte."TimeSheet No.");
+            recTSLine.SetRange("Date", iterDate);
+            if recTSLine.FindFirst() then begin
+                recTSLine.Validate("Job No.", jobNo);
+                recTSLine.Validate("Job Task No.", jobTaskNo);
+                //  recTSLine.Validate("Work Type Code", WorkTypeCod);
+                recTSLine.Validate("Activity Code", jobType);
+
+                //(pCabParte."Fines De Semana" = false) and 
+                if (isHoliday = true) then begin
+                    recTSLine.Validate("Hours", 0);
+                end else begin
+                    recTSLine.Validate("Hours", dHours);
+                end;
+                recTSLine.Modify(true);
+            end else begin
+                recTSLine.Init();
+                recTSLine.Validate("TimeSheet No.", pCabParte."TimeSheet No.");
+                recTSLine.Validate("Date", iterDate);
+                // (pCabParte."Fines De Semana" = false) and
+                if (isHoliday = true) then begin
+                    recTSLine.Validate("Hours", 0);
+
+                end else begin
+
+                    if jobHour = 0 then begin
+                        recTSLine.Validate("Hours", dHours);
+                    end else
+                        recTSLine.Validate("Hours", jobHour);
+                end;
+
+                recTSLine.Validate("Job No.", jobNo);
+                recTSLine.Validate("Job Task No.", jobTaskNo);
+                recTSLine.Validate(Holiday, isHoliday);
+                recTSLine.Validate("Resource No.", pCabParte."Resource No.");
+                recTSLine.Validate("Activity Code", jobType);
+                //  recTSLine.Validate("Work Type Code", WorkTypeCod);
+                recTSLine.Insert(true);
+            end;
+
+            iterDate := CALCDATE('1D', iterDate);
+        until iterDate > untilDate;
+    end;
+
+    procedure RecursoEmpleado(pResurso: Code[20]): Boolean
+    var
+        empleadoRecurso: Record Employee;
+    begin
+
+        empleadoRecurso.SetRange("Resource No.", pResurso);
+        if empleadoRecurso.FindFirst() then begin
+            if empleadoRecurso.Status = empleadoRecurso.Status::Active then begin
+                exit(true);
+            end else begin
+                exit(false);
+            end;
+        end;
+
+
+    end;
+
+
+
     /// <summary>
     /// vacas.
     /// </summary>
@@ -726,4 +906,67 @@ codeunit 90100 ControlDeProcesos
                 exit(false);
         end;
     end;
+
+
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnAfterOnInsert', '', false, false)]
+    //  procedure OnBeforeOnInsert(var SalesHeader: Record "Sales Header"; var IsHandled: Boolean)
+    procedure OnAfterOnInsert(var SalesHeader: Record "Sales Header")
+    var
+        pag42: Page 43;
+    begin
+        if SalesHeader."Document Type" in [SalesHeader."Document Type"::Invoice, SalesHeader."Document Type"::"Credit Memo"] then
+            if SalesHeader."Posting Date" <= 20241231D then
+                SalesHeader."Do Not Send To SII" := true;
+
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnValidatePostingDateOnBeforeResetInvoiceDiscountValue', '', false, false)]
+    procedure OnValidatePostingDateOnBeforeResetInvoiceDiscountValue(var SalesHeader: Record "Sales Header"; xSalesHeader: Record "Sales Header")
+    begin
+        if SalesHeader."Document Type" in [SalesHeader."Document Type"::Invoice, SalesHeader."Document Type"::"Credit Memo"] then
+            if SalesHeader."Posting Date" <= 20241231D then begin
+                SalesHeader."Do Not Send To SII" := true;
+            end else
+                SalesHeader."Do Not Send To SII" := false;
+
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnBeforeValidatePostingDate', '', false, false)]
+    procedure OnBeforeValidatePostingDate(var SalesHeader: Record "Sales Header"; xSalesHeader: Record "Sales Header"; CurrentFieldNo: Integer; var IsHandled: Boolean)
+    begin
+        if SalesHeader."Document Type" in [SalesHeader."Document Type"::Invoice, SalesHeader."Document Type"::"Credit Memo"] then
+            if SalesHeader."Posting Date" <= 20241231D then begin
+                SalesHeader."Do Not Send To SII" := true;
+            end else
+                SalesHeader."Do Not Send To SII" := false;
+    end;
+
+
+    //OnBeforeValidatePostingDate
+    [EventSubscriber(ObjectType::Table, database::"Purchase Header", 'OnBeforeValidatePostingDate', '', false, false)]
+    procedure OnBeforeValidatePostingDateCompra(var PurchaseHeader: Record "Purchase Header"; xPurchaseHeader: Record "Purchase Header"; CallingFieldNo: Integer; var IsHandled: Boolean)
+    begin
+        if PurchaseHeader."Document Type" in [PurchaseHeader."Document Type"::Invoice, PurchaseHeader."Document Type"::"Credit Memo"] then
+            if PurchaseHeader."Posting Date" <= 20241231D then begin
+                PurchaseHeader."Do Not Send To SII" := true;
+            end else
+                PurchaseHeader."Do Not Send To SII" := false;
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterInitRecord', '', false, false)]
+    local procedure OnAfterInitRecord(var PurchHeader: Record "Purchase Header")
+    begin
+        if PurchHeader."Document Type" in [PurchHeader."Document Type"::Invoice, PurchHeader."Document Type"::"Credit Memo"] then
+            if PurchHeader."Posting Date" <= 20241231D then begin
+                PurchHeader."Do Not Send To SII" := true;
+            end else
+                PurchHeader."Do Not Send To SII" := false;
+    end;
+
+    /*
+    OnValidatePostingDateOnBeforeResetInvoiceDiscountValue(var SalesHeader: Record "Sales Header"; xSalesHeader: Record "Sales Header")
+    begin
+    end;
+    */
 }

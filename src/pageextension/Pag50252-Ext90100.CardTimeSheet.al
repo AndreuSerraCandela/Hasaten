@@ -30,6 +30,17 @@ pageextension 90100 CardTimeSheet extends "HGWA TimeSheet Card" //50252
 
         addafter("Refresh Job planning")
         {
+            action("Crear Parte Mensual de Recursos")
+            {
+                ApplicationArea = All;
+
+                trigger OnAction()
+                var
+                    EventosRadial: Codeunit ControlDeProcesos;
+                begin
+                    EventosRadial.CrearPartesMensual();
+                end;
+            }
 
             action("Refresh Job assignation.")
             {
