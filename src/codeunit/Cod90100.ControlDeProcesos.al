@@ -293,6 +293,12 @@ codeunit 90100 ControlDeProcesos
         //  CabeceraPArte: Record "WAPP TimeSheets";
         CabeceraPArte: Record "HGWA TimeSheets";
         Month: Code[20];
+        pMonth: Code[20];
+        iMonth: Integer;
+        iYear: Integer;
+        iterDate: Date;
+        fromDate: Date;
+        untilDate: Date;
         //  CabParteExiste: Record "WAPP TimeSheets";
         CabParteExiste: Record "HGWA TimeSheets";
     //  WebRecurso: Record "WAPP Users";
@@ -305,29 +311,40 @@ codeunit 90100 ControlDeProcesos
                 // If (CabeceraPArte."TimeSheet No." = '') and (CabeceraPArte."Resource No." <> '') and (CabeceraPArte.Month <> '') then begin
                 //     CabeceraPArte."TimeSheet No." := StrSubstNo('%1_%2', CabeceraPArte."Resource No.", CabeceraPArte.Month);
                 // end;
-            end;
-            RResurso.SetRange(Blocked, false);
-            if RResurso.FindFirst() then begin
-                //si devuelve un false entonces ok al proceso, si devulve true el recurso esta bloqueado por la web.               
-                repeat
-                    if RecursoEmpleado(RResurso."No.") then begin
-                        RecursoPorProyecto.SetRange("Resource No.", RResurso."No.");
-                        if RecursoPorProyecto.FindFirst() then begin
+                pMonth := Month;
 
-                            CabeceraPArte.Init();
-                            CabeceraPArte."TimeSheet No." := StrSubstNo('%1_%2', RResurso."No.", Month);
-                            CabeceraPArte.Validate(CabeceraPArte.Month, Month);
-                            CabeceraPArte.Validate("Resource No.", RResurso."No.");
+                Evaluate(iMonth, Format(pMonth).Split('-').Get(2));
+                Evaluate(iYear, Format(pMonth).Split('-').Get(1));
+                fromDate := DMY2Date(1, iMonth, iYear);
+                untilDate := CALCDATE('<CM>', fromDate);
+                iterDate := fromDate;
 
-                            CabParteExiste.SetRange("TimeSheet No.", CabeceraPArte."TimeSheet No.");
-                            if not CabParteExiste.FindFirst() then begin
-                                CabeceraPArte.Insert(true);
-                                LineasPartes(Month, CabeceraPArte);
+                RResurso.SetRange(Blocked, false);
+                if RResurso.FindFirst() then begin
+                    //si devuelve un false entonces ok al proceso, si devulve true el recurso esta bloqueado por la web.               
+                    repeat
+                        if RecursoEmpleado(RResurso."No.") then begin
+                            RecursoPorProyecto.SetRange("Resource No.", RResurso."No.");
+                            RecursoPorProyecto.SetFilter("From Date", '..%1', iterDate);
+                            RecursoPorProyecto.SetFilter("Until Date", '%1..', iterDate);
+                            // RecursoPorProyecto.SetFilter();
+                            if RecursoPorProyecto.FindFirst() then begin
+
+                                CabeceraPArte.Init();
+                                CabeceraPArte."TimeSheet No." := StrSubstNo('%1_%2', RResurso."No.", Month);
+                                CabeceraPArte.Validate(CabeceraPArte.Month, Month);
+                                CabeceraPArte.Validate("Resource No.", RResurso."No.");
+
+                                CabParteExiste.SetRange("TimeSheet No.", CabeceraPArte."TimeSheet No.");
+                                if not CabParteExiste.FindFirst() then begin
+                                    CabeceraPArte.Insert(true);
+                                    LineasPartes(Month, CabeceraPArte);
+                                end;
+
                             end;
-
                         end;
-                    end;
-                until RResurso.Next = 0;
+                    until RResurso.Next = 0;
+                end;
             end;
         end;
     end;
