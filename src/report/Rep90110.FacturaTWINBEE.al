@@ -115,6 +115,7 @@ report 90110 "Factura-TWINBEE"
             column(CompanyVATRegistrationNo_Lbl; CompanyInfo.GetVATRegistrationNumberLbl)
             {
             }
+            /*
             column(CompanyLegalOffice; CompanyInfo.GetLegalOffice)
             {
             }
@@ -125,6 +126,18 @@ report 90110 "Factura-TWINBEE"
             {
             }
             column(CompanyCustomGiro_Lbl; CompanyInfo.GetCustomGiroLbl)
+            {
+            }*/
+            column(CompanyLegalOffice; '')
+            {
+            }
+            column(CompanyLegalOffice_Lbl; '')
+            {
+            }
+            column(CompanyCustomGiro; '')
+            {
+            }
+            column(CompanyCustomGiro_Lbl; '')
             {
             }
             column(CompanyLegalStatement; GetLegalStatement)
@@ -1136,7 +1149,7 @@ report 90110 "Factura-TWINBEE"
                 CurrencyExchangeRate: Record "Currency Exchange Rate";
                 PaymentServiceSetup: Record "Payment Service Setup";
             begin
-                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
+                CurrReport.Language := LanguageMgt.GetLanguageIdOrDefault("Language Code");
 
                 if not IsReportInPreviewMode then
                     CODEUNIT.Run(CODEUNIT::"Sales Inv.-Printed", Header);
@@ -1352,7 +1365,8 @@ report 90110 "Factura-TWINBEE"
         TempLineFeeNoteOnReportHist: Record "Line Fee Note on Report Hist." temporary;
         SellToContact: Record Contact;
         BillToContact: Record Contact;
-        Language: Codeunit Language;
+        //  Language: Codeunit Language;
+        LanguageMgt: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
         SegManagement: Codeunit SegManagement;
@@ -1546,7 +1560,7 @@ report 90110 "Factura-TWINBEE"
                 TempLineFeeNoteOnReportHist.Insert();
             until LineFeeNoteOnReportHist.Next() = 0;
         end else begin
-            LineFeeNoteOnReportHist.SetRange("Language Code", Language.GetUserLanguageCode);
+            LineFeeNoteOnReportHist.SetRange("Language Code", LanguageMgt.GetUserLanguageCode);
             if LineFeeNoteOnReportHist.FindSet then
                 repeat
                     TempLineFeeNoteOnReportHist.Init();
