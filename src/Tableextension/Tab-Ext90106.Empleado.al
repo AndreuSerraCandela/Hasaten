@@ -157,6 +157,11 @@ tableextension 90106 Empleado extends Employee
 
             end;
         }
+        field(50018; Calendario; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            TableRelation = Calendario.Code;
+        }
 
         modify("Birth Date")
         {

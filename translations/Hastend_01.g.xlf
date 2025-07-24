@@ -3,6 +3,16 @@
   <file datatype="xml" source-language="en-US" target-language="en-US" original="Hastend_01">
     <body>
       <group id="body">
+        <trans-unit id="Table 3134318952 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Calendario - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3134318952 - Field 1475260075 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Descripcion</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Calendario - Field Descripcion - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 323353982 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Codigo</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -148,6 +158,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Resource by Job Buffer - Field Tarifa - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3744362591 - Field 4092165491 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Codigo</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table SubProyecto - Field Codigo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3744362591 - Field 1475260075 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Descripcion</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table SubProyecto - Field Descripcion - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 19695179 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Codigo</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -167,6 +187,16 @@
           <source>Bloked</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ControlDeProcesos - Method OnAfterModifyLineJOB - NamedType ErrorBlo</note>
+        </trans-unit>
+        <trans-unit id="Page 3134318952 - Control 3004954119 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Code field.</source>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Calendario - Control Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3134318952 - Control 1475260075 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Descripcion field.</source>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Calendario - Control Descripcion - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1623960598 - Control 2790486453 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies whether a comment was entered for this entry.</source>
@@ -552,6 +582,16 @@
           <source>Specifies the price of one unit of the item or resource. You can enter a price manually or have it entered according to the Price/Profit Calculation field on the related card.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Recursos Matrix - Control Unit Price - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3744362591 - Control 4092165491 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Codigo field.</source>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page SubProyecto - Control Codigo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3744362591 - Control 1475260075 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Descripcion field.</source>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page SubProyecto - Control Descripcion - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Report 2938220087 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sales - Invoice</source>
@@ -953,6 +993,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Control Birth Date - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 501522804 - Control 3134318952 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
+          <source>Specifies the value of the Calendario field.</source>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Control Calendario - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 501522804 - Control 1667569833 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
           <source>Specifies a code for the cause of inactivity by the employee.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1173,6 +1218,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeListEx - Control Vacaciones Anuales - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2220162567 - Control 3134318952 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>Specifies the value of the Calendario field.</source>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeListEx - Control Calendario - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2220162567 - Control 4190130733 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
           <source>Specifies the value of the Customer No. field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1333,6 +1383,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ConfJob - Field Prices in Resources - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2169576197 - Field 3134318952 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>Calendario</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Empleado - Field Calendario - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2169576197 - Field 284990818 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
           <source>Consumidas</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1423,6 +1478,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Empleado - Field Vacaciones Anuales - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2867178329 - Field 3744362591 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2503863113">
+          <source>SubProyecto</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension HGWAResourceJobs - Field SubProyecto - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3427506604 - Field 1480326018 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 938095748">
           <source>Codigo Concepto</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1502,6 +1562,11 @@
           <source>Sales</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TimeSheet - Field Sales - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1690309038 - Field 3744362591 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 521011663">
+          <source>SubProyecto</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TimeSheet - Field SubProyecto - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1690309038 - Field 3996842083 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 521011663">
           <source>Total Cost</source>

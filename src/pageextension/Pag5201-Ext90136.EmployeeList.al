@@ -7,12 +7,18 @@ pageextension 90136 "EmployeeList" extends "Employee List" //5201
     {
         addlast(Control1)
         {
+            field(Calendario; Rec.Calendario)
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Calendario field.', Comment = '%';
+            }
 
             field(Address; Rec.Address)
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the employee''s address.';
             }
+
             field("Address 2"; Rec."Address 2")
             {
                 ApplicationArea = All;

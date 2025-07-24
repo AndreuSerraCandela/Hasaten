@@ -453,6 +453,7 @@ codeunit 90100 ControlDeProcesos
                 recTSLine.Validate(Holiday, isHoliday);
                 recTSLine.Validate("Resource No.", pCabParte."Resource No.");
                 recTSLine.Validate("Activity Code", jobType);
+                recTSLine.Validate(SubProyecto, recResourceJobs.SubProyecto);
                 //  recTSLine.Validate("Work Type Code", WorkTypeCod);
                 recTSLine.Insert(true);
             end;

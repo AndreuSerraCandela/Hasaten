@@ -121,6 +121,11 @@ pageextension 90135 "EmployeeListEx" extends "Employee Card" //5200
                 ToolTip = 'Specifies the value of the Edad field.';
                 ApplicationArea = All;
             }
+            field(Calendario; Rec.Calendario)
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Calendario field.', Comment = '%';
+            }
 
         }
     }

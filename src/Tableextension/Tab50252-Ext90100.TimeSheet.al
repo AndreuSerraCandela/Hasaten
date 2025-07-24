@@ -58,6 +58,11 @@ tableextension 90100 TimeSheet extends "HGWA TimeSheets Lines" //50252
             Caption = '% Benefic';
             //% Beneficio
         }
+        field(90115; SubProyecto; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            TableRelation = SubProyecto.Codigo;
+        }
 
 
         modify(Hours)
