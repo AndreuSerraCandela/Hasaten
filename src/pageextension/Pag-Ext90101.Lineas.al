@@ -29,6 +29,11 @@ pageextension 90101 Lineas extends "HGWA TimeSheet Lines"
                 Editable = not BlbEditable;
 
             }
+            field(SubProyecto; Rec.SubProyecto)
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the SubProyecto field.', Comment = '%';
+            }
             // field(Bloked; Rec.Bloked)
             // {
             //     Caption = 'Bloqueado';

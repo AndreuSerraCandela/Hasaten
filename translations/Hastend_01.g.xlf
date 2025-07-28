@@ -523,6 +523,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Lista Recursos Por Proyectos - Control No.Recurso - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 3810381196 - Control 3744362591 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the SubProyecto field.</source>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Lista Recursos Por Proyectos - Control SubProyecto - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 2581987057 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lineas partes Horas Matrix</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1337,6 +1342,11 @@
           <source>Specifies the value of the Sales field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Lineas - Control Sales - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2903838400 - Control 3744362591 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4231837098">
+          <source>Specifies the value of the SubProyecto field.</source>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Lineas - Control SubProyecto - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 2903838400 - Control 3996842083 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4231837098">
           <source>Specifies the value of the Total Cost field.</source>

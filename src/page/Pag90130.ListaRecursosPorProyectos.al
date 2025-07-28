@@ -31,6 +31,10 @@ page 90130 "Lista Recursos Por Proyectos"
                 {
                     ApplicationArea = All;
                 }
+                field(SubProyecto; Rec.SubProyecto)
+                {
+                    ToolTip = 'Specifies the value of the SubProyecto field.', Comment = '%';
+                }
                 field("Fecha Desde"; Rec."From Date")
                 {
                     ApplicationArea = All;
