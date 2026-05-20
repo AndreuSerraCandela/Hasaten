@@ -23,4 +23,24 @@ pageextension 90104 JobSetup extends "Jobs Setup"
             }
         }
     }
+    actions
+    {
+        addlast(processing)
+        {
+            action("Cambiar divisa Local")
+            {
+                ApplicationArea = All;
+                Image = Currency;
+                trigger OnAction()
+                var
+                    GenLedgSetup: Record "General Ledger Setup";
+                begin
+                    if GenLedgSetup.Get() then begin
+                        GenLedgSetup."LCY Code" := 'EUR';
+                        GenLedgSetup.Modify();
+                    end;
+                end;
+            }
+        }
+    }
 }
