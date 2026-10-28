@@ -66,6 +66,7 @@ pageextension 90135 "EmployeeListEx" extends "Employee Card" //5200
 
                 }
             }
+           
             group(Vacaciones)
             {
                 field("Disponible Año Anterior"; Rec."Disponible Año Anterior")
@@ -79,10 +80,43 @@ pageextension 90135 "EmployeeListEx" extends "Employee Card" //5200
                     ToolTip = 'Specifies the value of the Disponible field.';
                     ApplicationArea = All;
                 }
-                field(Servicio; Rec.Servicio)
+                group(Serv)
                 {
-                    ToolTip = 'Specifies the value of the Servicio field.';
-                    ApplicationArea = All;
+                    ShowCaption = false;
+                    field(Servicio; Rec.Servicio)
+                    {
+                        ToolTip = 'Specifies the value of the Servicio field.';
+                        ApplicationArea = All;
+                    }
+                    fixed(Modalidad)
+                    {
+                        group(PresencialCol)
+                        {
+                            Caption = 'Presencial';
+                            field("Presencial"; Rec."Presencial")
+                            {
+                                Caption = 'Servicio';
+                                ToolTip = 'Specifies the value of the Presencial field.';
+                                ApplicationArea = All;
+                                DecimalPlaces = 0 : 0;
+                                AutoFormatType = 11;
+                                AutoFormatExpression = '<Precision,0:0><Standard Format,0>%';
+                            }
+                        }
+                        group(HibridoCol)
+                        {
+                            Caption = 'Hibrido';
+                            field("Hibrido"; Rec."Hibrido")
+                            {
+                                Caption = 'Servicio';
+                                ToolTip = 'Specifies the value of the Hibrido field.';
+                                ApplicationArea = All;
+                                DecimalPlaces = 0 : 0;
+                                AutoFormatType = 11;
+                                AutoFormatExpression = '<Precision,0:0><Standard Format,0>%';
+                            }
+                        }
+                    }
                 }
                 field(Consumidas; Rec.Consumidas)
                 {

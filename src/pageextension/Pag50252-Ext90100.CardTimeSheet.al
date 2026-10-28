@@ -41,6 +41,19 @@ pageextension 90100 CardTimeSheet extends "HGWA TimeSheet Card" //50252
                     EventosRadial.CrearPartesMensual();
                 end;
             }
+            action("Bloquear partes por fechas")
+            {
+                Caption = 'Bloquear partes por fechas';
+                ApplicationArea = All;
+                Image = Calendar;
+                ToolTip = 'Bloquea o desbloquea todas las líneas de partes de todos los recursos en un rango de fechas (p. ej. el mes completo).';
+                trigger OnAction()
+                var
+                    Control: Codeunit ControlDeProcesos;
+                begin
+                    Control.AbrirBloqueoPartesPorFechas();
+                end;
+            }
 
             action("Refresh Job assignation.")
             {

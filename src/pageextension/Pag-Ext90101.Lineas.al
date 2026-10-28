@@ -34,11 +34,11 @@ pageextension 90101 Lineas extends "HGWA TimeSheet Lines"
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the SubProyecto field.', Comment = '%';
             }
-            // field(Bloked; Rec.Bloked)
-            // {
-            //     Caption = 'Bloqueado';
-            //     ApplicationArea = All;
-            // }
+            field(Bloked; Rec.Bloked)
+            {
+                Caption = 'Bloqueado';
+                ApplicationArea = All;
+            }
             field("Unit Price"; Rec."Unit Price")
             {
                 Caption = 'Unit Price';
@@ -131,6 +131,47 @@ pageextension 90101 Lineas extends "HGWA TimeSheet Lines"
                     TimeLines.ModifyAll(Marked, false);
                 end;
 
+            }
+            action("Block Selected")
+            {
+                Caption = 'Bloquear seleccionadas';
+                ApplicationArea = All;
+                Image = Lock;
+                trigger OnAction()
+                var
+                    TimeLines: Record "HGWA TimeSheets Lines";
+                begin
+                    CurrPage.SetSelectionFilter(TimeLines);
+                    TimeLines.ModifyAll(Bloked, true);
+                    TimeLines.ModifyAll(Blocked, true);
+                end;
+            }
+            action("Unblock Selected")
+            {
+                Caption = 'Desbloquear seleccionadas';
+                ApplicationArea = All;
+                Image = Unlock;
+                trigger OnAction()
+                var
+                    TimeLines: Record "HGWA TimeSheets Lines";
+                begin
+                    CurrPage.SetSelectionFilter(TimeLines);
+                    TimeLines.ModifyAll(Bloked, false);
+                    TimeLines.ModifyAll(Blocked, false);
+                end;
+            }
+            action("Bloquear partes por fechas")
+            {
+                Caption = 'Bloquear partes por fechas';
+                ApplicationArea = All;
+                Image = Calendar;
+                ToolTip = 'Bloquea o desbloquea todas las líneas de partes de todos los recursos en un rango de fechas.';
+                trigger OnAction()
+                var
+                    Control: Codeunit ControlDeProcesos;
+                begin
+                    Control.AbrirBloqueoPartesPorFechas();
+                end;
             }
 
         }

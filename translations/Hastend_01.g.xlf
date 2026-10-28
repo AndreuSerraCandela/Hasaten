@@ -1213,6 +1213,36 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeListEx - Control Por Consumir - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2220162567 - Control 565677637 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>Hibrido</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeListEx - Control HibridoCol - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2220162567 - Control 1780081981 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>Specifies the value of the Hibrido field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeListEx - Control Hibrido - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2220162567 - Control 1780081981 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>Servicio</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeListEx - Control Hibrido - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2220162567 - Control 1719015404 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>Presencial</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeListEx - Control PresencialCol - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2220162567 - Control 3814287708 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>Specifies the value of the Presencial field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeListEx - Control Presencial - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2220162567 - Control 3814287708 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>Servicio</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeListEx - Control Presencial - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2220162567 - Control 4205920258 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
           <source>Specifies the value of the Servicio field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1448,6 +1478,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Empleado - Field Fin Periodo de Prueba - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2169576197 - Field 1780081981 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>Hibrido</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Empleado - Field Hibrido - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2169576197 - Field 88342008 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
           <source>Perfil</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1457,6 +1492,11 @@
           <source>Por Consumir</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Empleado - Field Por Consumir - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2169576197 - Field 3814287708 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>Presencial</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Empleado - Field Presencial - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2169576197 - Field 581493816 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
           <source>Salario Año</source>

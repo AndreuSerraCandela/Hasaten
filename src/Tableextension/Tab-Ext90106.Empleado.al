@@ -186,6 +186,19 @@ tableextension 90106 Empleado extends Employee
                 CalculaVacaciones();
             end;
         }
+        //Presencial, Decimal
+        field(50019; "Presencial"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Presencial';
+        }
+        //Hibrido, Decimal
+        field(50020; "Hibrido"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Hibrido';
+        }
+
     }
 
     /// <summary>

@@ -925,6 +925,53 @@ codeunit 90100 ControlDeProcesos
         end;
     end;
 
+    procedure AbrirBloqueoPartesPorFechas()
+    var
+        DialogPage: Page "Bloquear Partes Fechas";
+        FromDate: Date;
+        ToDate: Date;
+        Bloquear: Boolean;
+    begin
+        if DialogPage.RunModal() <> Action::OK then
+            exit;
+        DialogPage.GetParams(FromDate, ToDate, Bloquear);
+        BloquearLineasPartesPorFechas(FromDate, ToDate, Bloquear);
+    end;
+
+    procedure BloquearLineasPartesPorFechas(FromDate: Date; ToDate: Date; Bloquear: Boolean)
+    var
+        Lines: Record "HGWA TimeSheets Lines";
+        CountLines: Integer;
+        ConfirmMsg: Label 'Se van a %1 %2 líneas de partes entre %3 y %4 (todos los recursos). ¿Continuar?';
+        DoneMsg: Label 'Proceso completado. %1 líneas actualizadas.';
+        NoLinesErr: Label 'No hay líneas de partes en el rango indicado.';
+        DatesErr: Label 'Debe indicar Fecha desde y Fecha hasta.';
+        RangeErr: Label 'La Fecha desde no puede ser posterior a la Fecha hasta.';
+        ActionTxt: Text;
+    begin
+        if (FromDate = 0D) or (ToDate = 0D) then
+            Error(DatesErr);
+        if FromDate > ToDate then
+            Error(RangeErr);
+
+        Lines.SetRange(Date, FromDate, ToDate);
+        CountLines := Lines.Count();
+        if CountLines = 0 then
+            Error(NoLinesErr);
+
+        if Bloquear then
+            ActionTxt := 'bloquear'
+        else
+            ActionTxt := 'desbloquear';
+
+        if not Confirm(ConfirmMsg, false, ActionTxt, CountLines, FromDate, ToDate) then
+            exit;
+
+        Lines.ModifyAll(Bloked, Bloquear);
+        Lines.ModifyAll(Blocked, Bloquear);
+        Message(DoneMsg, CountLines);
+    end;
+
 
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnAfterOnInsert', '', false, false)]

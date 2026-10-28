@@ -243,6 +243,47 @@ page 50256 LineasPartesWeb
                     CurrPage.Update(true);
                 end;
             }
+            action("Bloquear partes por fechas")
+            {
+                Caption = 'Bloquear partes por fechas';
+                ApplicationArea = All;
+                Image = Calendar;
+                ToolTip = 'Bloquea o desbloquea todas las líneas de partes de todos los recursos en un rango de fechas.';
+                trigger OnAction()
+                var
+                    Control: Codeunit ControlDeProcesos;
+                begin
+                    Control.AbrirBloqueoPartesPorFechas();
+                end;
+            }
+            action("Bloquear seleccionadas")
+            {
+                Caption = 'Bloquear seleccionadas';
+                ApplicationArea = All;
+                Image = Lock;
+                trigger OnAction()
+                var
+                    TimeLines: Record "HGWA TimeSheets Lines";
+                begin
+                    CurrPage.SetSelectionFilter(TimeLines);
+                    TimeLines.ModifyAll(Bloked, true);
+                    TimeLines.ModifyAll(Blocked, true);
+                end;
+            }
+            action("Desbloquear seleccionadas")
+            {
+                Caption = 'Desbloquear seleccionadas';
+                ApplicationArea = All;
+                Image = Unlock;
+                trigger OnAction()
+                var
+                    TimeLines: Record "HGWA TimeSheets Lines";
+                begin
+                    CurrPage.SetSelectionFilter(TimeLines);
+                    TimeLines.ModifyAll(Bloked, false);
+                    TimeLines.ModifyAll(Blocked, false);
+                end;
+            }
 
         }
     }
